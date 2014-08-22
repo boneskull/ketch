@@ -58,14 +58,14 @@ Class: Ketch
 ===
 Provides chainable functions to easily build and execute a command.
 
-**last_err**: `String` , Last error, if present
-**last_stdout**: `String` , Last stdout value, if present
-**last_stderr**: `String` , Last stderr value, if present
-**last_exec_cmd**: `String` , Last command run with `child_process.exec()`
-**last_execFile_cmd**: `String` , Last command run with `child_process.execFile()`
-**last_fork_cmd**: `String` , Last command run with `child_process.fork()`
-**last_spawn_cmd**: `String` , Last command run with `child_process.spawn()`
-**cmd**: `Array` , Internal array representation of this command.
+**last_err**: `String` , Last error, if present  
+**last_stdout**: `String` , Last stdout value, if present  
+**last_stderr**: `String` , Last stderr value, if present  
+**last_exec_cmd**: `String` , Last command run with `child_process.exec()`  
+**last_execFile_cmd**: `String` , Last command run with `child_process.execFile()`  
+**last_fork_cmd**: `String` , Last command run with `child_process.fork()`  
+**last_spawn_cmd**: `String` , Last command run with `child_process.spawn()`  
+**cmd**: `Array` , Internal array representation of this command.  
 ketch.Ketch.parseArgs() 
 -----------------------------
 Parse function arguments into an array.  `arguments` may be one of:
