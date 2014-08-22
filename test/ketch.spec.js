@@ -3,7 +3,7 @@
 var chai = require('chai'),
   expect = chai.expect,
   sinon = require('sinon'),
-  ketch = require('../ketch'),
+  ketch = require('../lib/ketch'),
   Q = require('q'),
   child_process = require('child_process');
 
