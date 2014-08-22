@@ -1,0 +1,17 @@
+{
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "forin": true,
+  "noarg": true,
+  "noempty": true,
+  "nonew": true,
+  "undef": true,
+  "strict": true,
+  "node": true,
+  "indent": 2,
+  "devel": true,
+  "expr": true,
+  "newcap": false,
+  "predef": ["describe", "it", "before", "after", "beforeEach", "afterEach"]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "coho",
+  "version": "0.1.0",
+  "description": "Ketch helps you execute, one way or another.",
+  "main": "lib/ketch.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boneskull/node-ketch"
+  },
+  "keywords": [
+    "spawn",
+    "exec",
+    "fork",
+    "child_process",
+    "command",
+    "commands",
+    "shell",
+    "execFile"
+  ],
+  "author": "Christopher Hiller <chiller@badwing.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boneskull/node-ketch/issues"
+  },
+  "homepage": "https://github.com/boneskull/node-ketch",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "chai-as-promised": "^4.1.1",
+    "grunt-bump": "0.0.15",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-mocha-cov": "^0.3.0",
+    "jshint-stylish": "^0.4.0",
+    "load-grunt-tasks": "^0.6.0",
+    "sinon": "^1.10.3",
+    "sinon-chai": "^2.5.0"
+  },
+  "dependencies": {
+    "q": "^1.0.1"
+  }
+}
