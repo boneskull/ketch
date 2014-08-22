@@ -6,10 +6,18 @@ Leverages [q](http://npmjs.org/q) for Promise implementation.
 
 When called as a function, this module will return a new `Ketch` instance.
 
-**Requires:**
+## Installation
 
-+ module:q
-+ module:child_process
+```
+npm install ketch
+```
+
+## Tests
+
+```
+npm test
+```
+
 
 
 **Example:**
@@ -208,6 +216,6 @@ Debugging function to log the current command to console.  Chainable, for your p
 
 **License:** MIT 
 
-**Overview:** Ketch helps you execute, one way or another.
+**Overview:** *Ketch helps you execute, one way or another.*
 
 
