@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ketch by boneskull</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/boneskull/node-ketch">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/boneskull/node-ketch/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/boneskull/node-ketch/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>ketch</h1>
+          <p>Ketch helps you execute, one way or another</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/boneskull">boneskull</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="ketch" class="anchor" href="#ketch"><span class="octicon octicon-link"></span></a>ketch</h1>
+
+<p>Use this module to easily build commands for passing to <a href="http://nodejs.org/api/child_process.html">child_process</a> functions.
+Leverages <a href="http://npmjs.org/q">q</a> for Promise implementation.</p>
+
+<p>When called as a function, this module will return a new <code>Ketch</code> instance.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>npm install ketch
+</code></pre>
+
+<h2>
+<a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<pre><code>npm test
+</code></pre>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">ketch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ketch'</span><span class="p">);</span>
+
+<span class="c1">// what branch am I on?</span>
+<span class="nx">ketch</span><span class="p">(</span><span class="s1">'git'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="s1">'/usr/bin/env'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'symbolic-ref'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">opt</span><span class="p">(</span><span class="s1">'quiet'</span><span class="p">,</span> <span class="s1">'short'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'HEAD'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">exec</span><span class="p">()</span>
+  <span class="c1">// returns stdout, stderr as array</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">output</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">output</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">trim</span><span class="p">());</span>
+  <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+  <span class="p">});</span>
+
+<span class="c1">// use a callback instead</span>
+<span class="nx">ketch</span><span class="p">(</span><span class="s1">'git'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="s1">'/usr/bin/env'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'symbolic-ref'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">opt</span><span class="p">(</span><span class="s1">'quiet'</span><span class="p">,</span> <span class="s1">'short'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'HEAD'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">stdout</span><span class="p">,</span> <span class="nx">stderr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">trim</span><span class="p">());</span>
+  <span class="p">});</span>
+</pre></div>
+
+<hr><h1>
+<a name="class-ketch" class="anchor" href="#class-ketch"><span class="octicon octicon-link"></span></a>Class: Ketch</h1>
+
+<p>Provides chainable functions to easily build and execute a command.</p>
+
+<p><strong>last_err</strong>: <code>String</code> , Last error, if present
+<strong>last_stdout</strong>: <code>String</code> , Last stdout value, if present
+<strong>last_stderr</strong>: <code>String</code> , Last stderr value, if present
+<strong>last_exec_cmd</strong>: <code>String</code> , Last command run with <code>child_process.exec()</code>
+<strong>last_execFile_cmd</strong>: <code>String</code> , Last command run with <code>child_process.execFile()</code>
+<strong>last_fork_cmd</strong>: <code>String</code> , Last command run with <code>child_process.fork()</code>
+<strong>last_spawn_cmd</strong>: <code>String</code> , Last command run with <code>child_process.spawn()</code>
+<strong>cmd</strong>: <code>Array</code> , Internal array representation of this command.</p>
+
+<h2>
+<a name="ketchketchparseargs-" class="anchor" href="#ketchketchparseargs-"><span class="octicon octicon-link"></span></a>ketch.Ketch.parseArgs() </h2>
+
+<p>Parse function arguments into an array.  <code>arguments</code> may be one of:</p>
+
+<ul>
+<li>an array</li>
+<li>a space-separated string</li>
+<li>one or more strings (<em>not</em> separated by space)</li>
+</ul><p><strong>Returns</strong>: <code>Array</code>, Command as an array</p>
+
+<h2>
+<a name="ketchketchappend-" class="anchor" href="#ketchketchappend-"><span class="octicon octicon-link"></span></a>ketch.Ketch.append() </h2>
+
+<p>Append an argument to this command.  <em>Alias: <code>push()</code></em></p>
+
+<p><strong>Returns</strong>: <code>Ketch</code>, Ketch instance</p>
+
+<h2>
+<a name="ketchketchprepend-" class="anchor" href="#ketchketchprepend-"><span class="octicon octicon-link"></span></a>ketch.Ketch.prepend() </h2>
+
+<p>Prepend an argument to this command.  <em>Alias: <code>unshift()</code></em></p>
+
+<p><strong>Returns</strong>: <code>Ketch</code>, Ketch instance</p>
+
+<h2>
+<a name="ketchketchopt-" class="anchor" href="#ketchketchopt-"><span class="octicon octicon-link"></span></a>ketch.Ketch.opt() </h2>
+
+<p>Sugar function to append one or more options to the command.</p>
+
+<p><strong>Returns</strong>: <code>Ketch</code>, Ketch instance</p>
+
+<p><strong>Example</strong>:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">ketch</span><span class="p">(</span><span class="s1">'git'</span><span class="p">).</span><span class="nx">opt</span><span class="p">(</span><span class="s1">'q'</span><span class="p">,</span> <span class="s1">'short'</span><span class="p">)</span> <span class="c1">// becomes "git -q --short"</span>
+</pre></div>
+
+<h2>
+<a name="ketchketchtostring-" class="anchor" href="#ketchketchtostring-"><span class="octicon octicon-link"></span></a>ketch.Ketch.toString() </h2>
+
+<p>Returns current command as a space-separated string.</p>
+
+<p><strong>Returns</strong>: <code>String</code>, String representation of this command</p>
+
+<h2>
+<a name="ketchketchpop-" class="anchor" href="#ketchketchpop-"><span class="octicon octicon-link"></span></a>ketch.Ketch.pop() </h2>
+
+<p>Pops the last argument off of the command.  Does not return it.  If you need that, use <code>ketch('foo').cmd.pop()</code></p>
+
+<p><strong>Returns</strong>: <code>Ketch</code>, Ketch instance</p>
+
+<h2>
+<a name="ketchketchshift-" class="anchor" href="#ketchketchshift-"><span class="octicon octicon-link"></span></a>ketch.Ketch.shift() </h2>
+
+<p>Shifts the first argument off of the command.  Does not return it.  If you need that, use <code>ketch('foo').cmd.shift()</code></p>
+
+<p><strong>Returns</strong>: <code>Ketch</code>, Ketch instance</p>
+
+<h2>
+<a name="ketchketchsplice-" class="anchor" href="#ketchketchsplice-"><span class="octicon octicon-link"></span></a>ketch.Ketch.splice() </h2>
+
+<p>Splice the command.</p>
+
+<p><strong>Returns</strong>: <code>Ketch</code>, Ketch instance</p>
+
+<h2>
+<a name="ketchketchserialize-" class="anchor" href="#ketchketchserialize-"><span class="octicon octicon-link"></span></a>ketch.Ketch.serialize() </h2>
+
+<p>"Serialize" this command into command/arguments array format, suitable for passing to <code>execFile</code> or <code>fork</code>.  <em>Alias: <code>get()</code></em></p>
+
+<p><strong>Returns</strong>: <code>Array</code>, Array where first item is a string, second is array of commands</p>
+
+<h2>
+<a name="ketchketchexecoptions-callback-" class="anchor" href="#ketchketchexecoptions-callback-"><span class="octicon octicon-link"></span></a>ketch.Ketch.exec(options, callback) </h2>
+
+<p>Wrapper around <code>child_process.exec()</code>.  Returns a promise, or</p>
+
+<p><strong>Parameters</strong></p>
+
+<p><strong>options</strong>: <code>Object</code>, Options for <code>child_process.exec()</code></p>
+
+<p><strong>callback</strong>: <code>function</code>, If present, will execute as NodeJS-style callback; otherwise will return a Promise.</p>
+
+<p><strong>Returns</strong>: <code>ChildProcess | Promise</code>, <code>ChildProcess</code> instance if <code>callback</code> is specified, otherwise a <code>Promise</code>.</p>
+
+<h2>
+<a name="ketchketchexecfileoptions-callback-" class="anchor" href="#ketchketchexecfileoptions-callback-"><span class="octicon octicon-link"></span></a>ketch.Ketch.execFile(options, callback) </h2>
+
+<p>Wrapper around <code>child_process.execFile()</code>.  Returns a promise, or</p>
+
+<p><strong>Parameters</strong></p>
+
+<p><strong>options</strong>: <code>Object</code>, Options for <code>child_process.execFile()</code></p>
+
+<p><strong>callback</strong>: <code>function</code>, If present, will execute as NodeJS-style callback; otherwise will return a Promise.</p>
+
+<p><strong>Returns</strong>: <code>ChildProcess | Promise</code>, <code>ChildProcess</code> instance if <code>callback</code> is specified, otherwise a <code>Promise</code>.</p>
+
+<h2>
+<a name="ketchketchforkoptions-callback-" class="anchor" href="#ketchketchforkoptions-callback-"><span class="octicon octicon-link"></span></a>ketch.Ketch.fork(options, callback) </h2>
+
+<p>Wrapper around <code>child_process.fork()</code>.  Returns a promise, or</p>
+
+<p><strong>Parameters</strong></p>
+
+<p><strong>options</strong>: <code>Object</code>, Options for <code>child_process.fork()</code></p>
+
+<p><strong>callback</strong>: <code>function</code>, If present, will execute as NodeJS-style callback; otherwise will return a Promise.</p>
+
+<p><strong>Returns</strong>: <code>ChildProcess | Promise</code>, <code>ChildProcess</code> instance if <code>callback</code> is specified, otherwise a <code>Promise</code>.</p>
+
+<h2>
+<a name="ketchketchspawnoptions-callback-" class="anchor" href="#ketchketchspawnoptions-callback-"><span class="octicon octicon-link"></span></a>ketch.Ketch.spawn(options, callback) </h2>
+
+<p>Wrapper around <code>child_process.spawn()</code>.  Returns a promise, or</p>
+
+<p><strong>Parameters</strong></p>
+
+<p><strong>options</strong>: <code>Object</code>, Options for <code>child_process.spawn()</code></p>
+
+<p><strong>callback</strong>: <code>function</code>, If present, will execute as NodeJS-style callback; otherwise will return a Promise.</p>
+
+<p><strong>Returns</strong>: <code>ChildProcess | Promise</code>, <code>ChildProcess</code> instance if <code>callback</code> is specified, otherwise a <code>Promise</code>.</p>
+
+<h2>
+<a name="ketchketch_execfn_name-args-options-callback-" class="anchor" href="#ketchketch_execfn_name-args-options-callback-"><span class="octicon octicon-link"></span></a>ketch.Ketch._exec(fn_name, args, options, callback) </h2>
+
+<p>Internal function to call <code>child_process</code> functions.</p>
+
+<p><strong>Parameters</strong></p>
+
+<p><strong>fn_name</strong>: <code>String</code>, One of <code>exec</code>, <code>execFile</code>, <code>fork</code> or <code>spawn</code></p>
+
+<p><strong>args</strong>: <code>Array</code>, Arguments to <code>child_process</code> function</p>
+
+<p><strong>options</strong>: <code>Object</code>, Options for <code>child_process</code> function</p>
+
+<p><strong>callback</strong>: <code>function</code>, Optional callback</p>
+
+<p><strong>Returns</strong>: <code>ChildProcess | Promise</code>, <code>ChildProcess</code> instance if <code>callback</code> is specified, otherwise a <code>Promise</code>.</p>
+
+<h2>
+<a name="ketchketchclear-" class="anchor" href="#ketchketchclear-"><span class="octicon octicon-link"></span></a>ketch.Ketch.clear() </h2>
+
+<p>Obliterates the current command.  <em>Alias: <code>reset()</code></em></p>
+
+<p><strong>Returns</strong>: <code>Ketch</code>, Ketch instance</p>
+
+<h2>
+<a name="ketchketchdebug-" class="anchor" href="#ketchketchdebug-"><span class="octicon octicon-link"></span></a>ketch.Ketch.debug() </h2>
+
+<p>Debugging function to log the current command to console.  Chainable, for your pleasure.</p>
+
+<p><strong>Returns</strong>: <code>Ketch</code>, Ketch instance</p>
+
+<hr><p><em>Copyright 2014, Christopher Hiller</em></p>
+
+<p><strong>Author:</strong> <a href="http:&amp;#x2F;&amp;#x2F;boneskull.github.io">Christopher Hiller</a></p>
+
+<p><strong>License:</strong> MIT </p>
+
+<p><strong>Overview:</strong> <em>Ketch helps you execute, one way or another.</em></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
