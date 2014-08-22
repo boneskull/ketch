@@ -1,5 +1,5 @@
 {
-  "name": "coho",
+  "name": "ketch",
   "version": "0.1.0",
   "description": "Ketch helps you execute, one way or another.",
   "main": "lib/ketch.js",
