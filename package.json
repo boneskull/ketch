@@ -2,7 +2,7 @@
   "name": "ketch",
   "version": "0.1.0",
   "description": "Ketch helps you execute, one way or another.",
-  "main": "lib/ketch.js",
+  "main": "guts/ketch.js",
   "scripts": {
     "test": "grunt test"
   },
@@ -31,14 +31,26 @@
     "chai-as-promised": "^4.1.1",
     "grunt-bump": "0.0.15",
     "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-jshint": "^0.10.0",
+    "grunt-jsdox": "git://github.com/mrjoelkemp/grunt-jsdox.git#fix_10",
     "grunt-mocha-cov": "^0.3.0",
+    "jsdox": "git://github.com/boneskull/jsdox.git",
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.6.0",
     "sinon": "^1.10.3",
-    "sinon-chai": "^2.5.0"
+    "sinon-chai": "^2.5.0",
+    "time-grunt": "^1.0.0"
   },
   "dependencies": {
     "q": "^1.0.1"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "guts"
+      ]
+    }
   }
 }

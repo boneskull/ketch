@@ -2,14 +2,15 @@
 
 module.exports = function (grunt) {
 
-  // Project configuration.
+  require('time-grunt')(grunt);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      all: [
+      main: [
         'Gruntfile.js',
         '<%= pkg.main %>',
-        '<%= mochacov.main %>'
+        '<%= mochacov.options.files %>'
       ],
       options: {
         jshintrc: true,
@@ -19,7 +20,20 @@ module.exports = function (grunt) {
 
     // Unit tests.
     mochacov: {
-      main: ['test/*.spec.js']
+      options: {
+        files: 'test/*.spec.js'
+      },
+      main: {
+        options: {
+          coveralls: true
+        }
+      },
+      'html-cov': {
+        options: {
+          reporter: 'html-cov',
+          output: 'coverage/index.html'
+        }
+      }
     },
 
     bump: {
@@ -42,23 +56,37 @@ module.exports = function (grunt) {
 
     jsdox: {
       main: {
+        options: {
+          contentsEnabled: false
+        },
         src: ['<%= pkg.main %>'],
         dest: '.'
       }
+    },
+
+    copy: {
+      readme: {
+        src: 'guts/ketch.md',
+        dest: 'README.md'
+      }
+    },
+
+    clean: {
+      readme: 'guts/ketch.md'
     }
 
   });
 
-  // load all npm grunt tasks
   require('load-grunt-tasks')(grunt);
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-  // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['jshint', 'mochacov']);
+  grunt.registerTask('test', ['jshint', 'mochacov:main']);
+  grunt.registerTask('html-cov', ['mochacov:html-cov']);
 
-  grunt.registerTask('release', 'Update docs, bump & tag for release', function(target) {
+  grunt.registerTask('docs', ['jsdox', 'copy', 'clean']);
+
+  grunt.registerTask('release', 'Update docs, bump & tag for release', function (target) {
     grunt.task.run('bump-only:' + target);
-    grunt.task.run('jsdox');
+    grunt.task.run('docs');
     grunt.task.run('bump-commit');
   });
 

@@ -8,21 +8,18 @@
  */
 
 /**
- * @description Use this module to easily build commands for passing to [child_process](http://nodejs.org/api/child_process.html) functions.
- * Leverages [q](http://npmjs.org/q) for Promise implementation.
+ * @description
+ *
+ * [![NPM](https://nodei.co/npm/ketch.png?compact=true)](https://nodei.co/npm/ketch/)
+ *
+ * Use this module to easily build commands for passing to [child_process](http://nodejs.org/api/child_process.html) functions.
  *
  * When called as a function, this module will return a new `Ketch` instance.
  *
  * ## Installation
  *
- * ```
+ * ```sh
  * npm install ketch
- * ```
- *
- * ## Tests
- *
- * ```
- * npm test
  * ```
  *
  * @module ketch
@@ -221,8 +218,8 @@ Ketch.prototype.fork = function fork(options, callback) {
  * @param {Function} [callback] If present, will execute as NodeJS-style callback; otherwise will return a Promise.
  * @returns {(ChildProcess|Promise)} `ChildProcess` instance if `callback` is specified, otherwise a `Promise`.
  */
-Ketch.prototype.spawn = function spawn(options) {
-  return this._exec('fork', this.serialize(), options);
+Ketch.prototype.spawn = function spawn(options, callback) {
+  return this._exec('fork', this.serialize(), options, callback);
 };
 
 /**

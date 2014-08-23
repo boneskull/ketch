@@ -1,21 +1,15 @@
-ketch
-===
+# ketch
+
+[![NPM](https://nodei.co/npm/ketch.png?compact=true)](https://nodei.co/npm/ketch/)
 
 Use this module to easily build commands for passing to [child_process](http://nodejs.org/api/child_process.html) functions.
-Leverages [q](http://npmjs.org/q) for Promise implementation.
 
 When called as a function, this module will return a new `Ketch` instance.
 
 ## Installation
 
-```
+```sh
 npm install ketch
-```
-
-## Tests
-
-```
-npm test
 ```
 
 
@@ -51,11 +45,10 @@ ketch('git')
     console.log(stdout.trim());
   });
 ```
-  
----
 
-Class: Ketch
-===
+* * *
+
+## Class: Ketch
 Provides chainable functions to easily build and execute a command.
 
 **last_err**: `String` , Last error, if present  
@@ -66,8 +59,8 @@ Provides chainable functions to easily build and execute a command.
 **last_fork_cmd**: `String` , Last command run with `child_process.fork()`  
 **last_spawn_cmd**: `String` , Last command run with `child_process.spawn()`  
 **cmd**: `Array` , Internal array representation of this command.  
-ketch.Ketch.parseArgs() 
------------------------------
+### ketch.Ketch.parseArgs() 
+
 Parse function arguments into an array.  `arguments` may be one of:
 
 - an array
@@ -76,20 +69,20 @@ Parse function arguments into an array.  `arguments` may be one of:
 
 **Returns**: `Array`, Command as an array
 
-ketch.Ketch.append() 
------------------------------
+### ketch.Ketch.append() 
+
 Append an argument to this command.  *Alias: `push()`*
 
 **Returns**: `Ketch`, Ketch instance
 
-ketch.Ketch.prepend() 
------------------------------
+### ketch.Ketch.prepend() 
+
 Prepend an argument to this command.  *Alias: `unshift()`*
 
 **Returns**: `Ketch`, Ketch instance
 
-ketch.Ketch.opt() 
------------------------------
+### ketch.Ketch.opt() 
+
 Sugar function to append one or more options to the command.
 
 **Returns**: `Ketch`, Ketch instance
@@ -98,39 +91,39 @@ Sugar function to append one or more options to the command.
 ```js
 ketch('git').opt('q', 'short') // becomes "git -q --short"
 ```
-  
-ketch.Ketch.toString() 
------------------------------
+
+### ketch.Ketch.toString() 
+
 Returns current command as a space-separated string.
 
 **Returns**: `String`, String representation of this command
 
-ketch.Ketch.pop() 
------------------------------
+### ketch.Ketch.pop() 
+
 Pops the last argument off of the command.  Does not return it.  If you need that, use `ketch('foo').cmd.pop()`
 
 **Returns**: `Ketch`, Ketch instance
 
-ketch.Ketch.shift() 
------------------------------
+### ketch.Ketch.shift() 
+
 Shifts the first argument off of the command.  Does not return it.  If you need that, use `ketch('foo').cmd.shift()`
 
 **Returns**: `Ketch`, Ketch instance
 
-ketch.Ketch.splice() 
------------------------------
+### ketch.Ketch.splice() 
+
 Splice the command.
 
 **Returns**: `Ketch`, Ketch instance
 
-ketch.Ketch.serialize() 
------------------------------
+### ketch.Ketch.serialize() 
+
 "Serialize" this command into command/arguments array format, suitable for passing to `execFile` or `fork`.  *Alias: `get()`*
 
 **Returns**: `Array`, Array where first item is a string, second is array of commands
 
-ketch.Ketch.exec(options, callback) 
------------------------------
+### ketch.Ketch.exec(options, callback) 
+
 Wrapper around `child_process.exec()`.  Returns a promise, or
 
 **Parameters**
@@ -141,8 +134,8 @@ Wrapper around `child_process.exec()`.  Returns a promise, or
 
 **Returns**: `ChildProcess | Promise`, `ChildProcess` instance if `callback` is specified, otherwise a `Promise`.
 
-ketch.Ketch.execFile(options, callback) 
------------------------------
+### ketch.Ketch.execFile(options, callback) 
+
 Wrapper around `child_process.execFile()`.  Returns a promise, or
 
 **Parameters**
@@ -153,8 +146,8 @@ Wrapper around `child_process.execFile()`.  Returns a promise, or
 
 **Returns**: `ChildProcess | Promise`, `ChildProcess` instance if `callback` is specified, otherwise a `Promise`.
 
-ketch.Ketch.fork(options, callback) 
------------------------------
+### ketch.Ketch.fork(options, callback) 
+
 Wrapper around `child_process.fork()`.  Returns a promise, or
 
 **Parameters**
@@ -165,8 +158,8 @@ Wrapper around `child_process.fork()`.  Returns a promise, or
 
 **Returns**: `ChildProcess | Promise`, `ChildProcess` instance if `callback` is specified, otherwise a `Promise`.
 
-ketch.Ketch.spawn(options, callback) 
------------------------------
+### ketch.Ketch.spawn(options, callback) 
+
 Wrapper around `child_process.spawn()`.  Returns a promise, or
 
 **Parameters**
@@ -177,38 +170,21 @@ Wrapper around `child_process.spawn()`.  Returns a promise, or
 
 **Returns**: `ChildProcess | Promise`, `ChildProcess` instance if `callback` is specified, otherwise a `Promise`.
 
-ketch.Ketch._exec(fn_name, args, options, callback) 
------------------------------
-Internal function to call `child_process` functions.
+### ketch.Ketch.clear() 
 
-**Parameters**
-
-**fn_name**: `String`, One of `exec`, `execFile`, `fork` or `spawn`
-
-**args**: `Array`, Arguments to `child_process` function
-
-**options**: `Object`, Options for `child_process` function
-
-**callback**: `function`, Optional callback
-
-**Returns**: `ChildProcess | Promise`, `ChildProcess` instance if `callback` is specified, otherwise a `Promise`.
-
-ketch.Ketch.clear() 
------------------------------
 Obliterates the current command.  *Alias: `reset()`*
 
 **Returns**: `Ketch`, Ketch instance
 
-ketch.Ketch.debug() 
------------------------------
+### ketch.Ketch.debug() 
+
 Debugging function to log the current command to console.  Chainable, for your pleasure.
 
 **Returns**: `Ketch`, Ketch instance
 
 
 
-
----
+* * *
 
 *Copyright 2014, Christopher Hiller*
 
