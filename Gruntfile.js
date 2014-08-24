@@ -84,12 +84,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('docs', ['jsdox', 'copy', 'clean']);
 
-  grunt.registerTask('release', 'Update docs, bump & tag for release', function (target) {
-    grunt.task.run('bump-only:' + target);
-    grunt.task.run('docs');
-    grunt.task.run('bump-commit');
-  });
-
   // By default, lint and run all tests.
   grunt.registerTask('default', ['test']);
 
