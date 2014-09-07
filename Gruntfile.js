@@ -25,15 +25,15 @@ module.exports = function (grunt) {
       },
       main: {
         options: {
+          reporter: 'spec'
+        }
+      },
+      lcov: {
+        options: {
           reporter: 'mocha-lcov-reporter',
           quiet: true,
           instrument: true,
           output: 'coverage/lcov.info'
-        }
-      },
-      coveralls: {
-        options: {
-          coveralls: true
         }
       },
       'html-cov': {
@@ -81,13 +81,20 @@ module.exports = function (grunt) {
 
     clean: {
       readme: 'guts/ketch.md'
+    },
+
+    codeclimate: {
+      options: {
+        file: 'coverage/lcov.info',
+        token: '28d125c7f65a97007ae1d42cd0de10d04d23613f439640180b2087a89c8cc67c'
+      }
     }
 
   });
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('test', ['jshint', 'mochacov:main', 'mochacov:coveralls']);
+  grunt.registerTask('test', ['jshint', 'mochacov:main', 'mochacov:lcov', 'codeclimate']);
   grunt.registerTask('html-cov', ['mochacov:html-cov']);
 
   grunt.registerTask('docs', ['jsdox', 'copy', 'clean']);
