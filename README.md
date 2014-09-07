@@ -1,6 +1,7 @@
 # ketch
 
 [![NPM](https://nodei.co/npm/ketch.png?compact=true)](https://nodei.co/npm/ketch/)
+[![Code Climate](https://codeclimate.com/github/boneskull/node-ketch/badges/gpa.svg)](https://codeclimate.com/github/boneskull/node-ketch) [![Test Coverage](https://codeclimate.com/github/boneskull/node-ketch/badges/coverage.svg)](https://codeclimate.com/github/boneskull/node-ketch)
 
 Use this module to easily build commands for passing to [child_process](http://nodejs.org/api/child_process.html) functions.
 
