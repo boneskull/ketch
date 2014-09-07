@@ -4,7 +4,8 @@
   "description": "Ketch helps you execute, one way or another.",
   "main": "guts/ketch.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "coverage": "grunt coverage"
   },
   "repository": {
     "type": "git",
