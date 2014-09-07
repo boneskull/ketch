@@ -93,7 +93,7 @@ module.exports = function (grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('test', ['jshint', 'mochacov:main', 'mochacov:coveralls']);
+  grunt.registerTask('test', ['jshint', 'mochacov:main', 'mochacov:coveralls', 'codeclimate']);
   grunt.registerTask('html-cov', ['mochacov:html-cov']);
 
   grunt.registerTask('docs', ['jsdox', 'copy', 'clean']);
