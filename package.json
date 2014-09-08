@@ -32,7 +32,6 @@
     "chai-as-promised": "^4.1.1",
     "grunt-bump": "0.0.15",
     "grunt-cli": "^0.1.13",
-    "grunt-codeclimate": "0.0.1-1",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.5.0",
     "grunt-contrib-jshint": "^0.10.0",
