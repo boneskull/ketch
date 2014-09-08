@@ -7,4 +7,5 @@ addons:
     repo_token:
       secure: "WIZLwyRj7wWeaVxHDFvTbRh3ghZCMLW/XL1qwwwjeQvn9lNthDYg8xyOhB+MUgkhfyulA7vBXaTT4TF14bhQBwJxEC9xyJDgSMWLOPQ7CjofXCiihdcEUz3MBvlcPFJEq9wZyFIfumm92Aya5uFj8dOBs+rHfArFbZS+FPehi9w="
 after_script:
+  - npm install -g codeclimate
   - cat coverage/lcov.info | codeclimate
