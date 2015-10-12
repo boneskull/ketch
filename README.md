@@ -1,7 +1,11 @@
 # ketch
 
+> Ketch helps you execute, one way or another.
+
 [![NPM](https://nodei.co/npm/ketch.png?compact=true)](https://nodei.co/npm/ketch/)
 [![Code Climate](https://codeclimate.com/github/boneskull/node-ketch/badges/gpa.svg)](https://codeclimate.com/github/boneskull/node-ketch) [![Test Coverage](https://codeclimate.com/github/boneskull/node-ketch/badges/coverage.svg)](https://codeclimate.com/github/boneskull/node-ketch)
+
+## Overview
 
 Use this module to easily build commands for passing to [child_process](http://nodejs.org/api/child_process.html) functions.
 
@@ -72,13 +76,13 @@ Parse function arguments into an array.  `arguments` may be one of:
 
 ### ketch.Ketch.append() 
 
-Append an argument to this command.  *Alias: `push()`*
+Append an argument or arguments to this command.  *Alias: `push()`*
 
 **Returns**: `Ketch`, Ketch instance
 
 ### ketch.Ketch.prepend() 
 
-Prepend an argument to this command.  *Alias: `unshift()`*
+Prepend an argument or arguments to this command.  *Alias: `unshift()`*
 
 **Returns**: `Ketch`, Ketch instance
 
@@ -187,12 +191,6 @@ Debugging function to log the current command to console.  Chainable, for your p
 
 * * *
 
-*Copyright 2014, Christopher Hiller*
+## License 
 
-**Author:** [Christopher Hiller](http:&#x2F;&#x2F;boneskull.github.io)
-
-**License:** MIT 
-
-**Overview:** *Ketch helps you execute, one way or another.*
-
-
+© 2014-2015, [Christopher Hiller](https://boneskull.com).  Licensed MIT.
