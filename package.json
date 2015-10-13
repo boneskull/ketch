@@ -1,6 +1,6 @@
 {
   "name": "ketch",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Ketch helps you execute, one way or another.",
   "main": "guts/ketch.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/boneskull/node-ketch"
+    "url": "https://github.com/boneskull/ketch.git"
   },
   "keywords": [
     "spawn",
@@ -21,32 +21,29 @@
     "shell",
     "execFile"
   ],
-  "author": "Christopher Hiller <chiller@badwing.com>",
+  "author": "Christopher Hiller <boneskull@boneskull.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/boneskull/node-ketch/issues"
+    "url": "https://github.com/boneskull/ketch/issues"
   },
-  "homepage": "https://github.com/boneskull/node-ketch",
+  "homepage": "https://github.com/boneskull/ketch",
   "devDependencies": {
-    "chai": "^1.9.1",
-    "chai-as-promised": "^4.1.1",
-    "grunt-bump": "0.0.15",
+    "bluebird": "^2.10.2",
+    "chai": "^3.3.0",
+    "chai-as-promised": "^5.1.0",
+    "grunt-bump": "^0.6.0",
     "grunt-cli": "^0.1.13",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-copy": "^0.5.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-jsdox": "^0.1.6",
-    "grunt-mocha-cov": "^0.3.0",
-    "jsdox": "git://github.com/boneskull/jsdox.git",
-    "jshint-stylish": "^0.4.0",
-    "load-grunt-tasks": "^0.6.0",
-    "mocha-lcov-reporter": "0.0.1",
-    "sinon": "^1.10.3",
-    "sinon-chai": "^2.5.0",
-    "time-grunt": "^1.0.0"
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-mocha-cov": "^0.4.0",
+    "jshint-stylish": "^2.0.1",
+    "load-grunt-tasks": "^3.3.0",
+    "mocha-lcov-reporter": "^1.0.0",
+    "sinon": "^1.17.1",
+    "sinon-chai": "^2.8.0",
+    "time-grunt": "^1.2.1"
   },
   "dependencies": {
-    "q": "^1.0.1"
+    "child-process-promise": "^1.1.0"
   },
   "config": {
     "blanket": {

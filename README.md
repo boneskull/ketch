@@ -3,7 +3,7 @@
 > Ketch helps you execute, one way or another.
 
 [![NPM](https://nodei.co/npm/ketch.png?compact=true)](https://nodei.co/npm/ketch/)
-[![Code Climate](https://codeclimate.com/github/boneskull/node-ketch/badges/gpa.svg)](https://codeclimate.com/github/boneskull/node-ketch) [![Test Coverage](https://codeclimate.com/github/boneskull/node-ketch/badges/coverage.svg)](https://codeclimate.com/github/boneskull/node-ketch)
+[![Code Climate](https://codeclimate.com/github/boneskull/ketch/badges/gpa.svg)](https://codeclimate.com/github/boneskull/ketch) [![Test Coverage](https://codeclimate.com/github/boneskull/ketch/badges/coverage.svg)](https://codeclimate.com/github/boneskull/ketch)
 
 ## Overview
 
@@ -123,7 +123,7 @@ Splice the command.
 
 ### ketch.Ketch.serialize() 
 
-"Serialize" this command into command/arguments array format, suitable for passing to `execFile` or `fork`.  *Alias: `get()`*
+"Serialize" this command into command/arguments array format, suitable for passing to `execFile` or `fork`.  *Aliases: `get()`, `toJSON`*
 
 **Returns**: `Array`, Array where first item is a string, second is array of commands
 
@@ -187,9 +187,15 @@ Debugging function to log the current command to console.  Chainable, for your p
 
 **Returns**: `Ketch`, Ketch instance
 
+### ketch.Ketch.tap()
 
+"Tap" into the chain.  
 
-* * *
+**Parameters**
+
+**callback**: `function`, Which will be passed the `Ketch` instance.
+
+**Returns**: `Ketch`, Ketch instance
 
 ## License 
 

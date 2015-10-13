@@ -70,26 +70,14 @@ module.exports = function (grunt) {
         src: ['<%= pkg.main %>'],
         dest: '.'
       }
-    },
-
-    copy: {
-      readme: {
-        src: 'guts/ketch.md',
-        dest: 'README.md'
-      }
-    },
-
-    clean: {
-      readme: 'guts/ketch.md'
     }
+
   });
 
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('test', ['jshint', 'mochacov:main', 'mochacov:lcov']);
   grunt.registerTask('html-cov', ['mochacov:html-cov']);
-
-  grunt.registerTask('docs', ['jsdox', 'copy', 'clean']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['test']);

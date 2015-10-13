@@ -4,8 +4,7 @@ var chai = require('chai'),
   expect = chai.expect,
   sinon = require('sinon'),
   ketch = require('../guts/ketch'),
-  Q = require('q'),
-  child_process = require('child_process');
+  childProcess = require('child-process-promise');
 
 chai.use(require('chai-as-promised'));
 chai.use(require('sinon-chai'));
@@ -146,28 +145,36 @@ describe('ketch', function () {
 
   describe('exec()', function () {
 
-    it('should call child_process.exec()', function () {
-      sandbox.stub(child_process, 'exec').yieldsAsync(null, 'bar', 'baz');
+    var Promise = require('bluebird');
+
+    it('should call child-process-promise.exec()', function () {
+      sandbox.stub(childProcess, 'exec').returns(Promise.resolve({
+        stdout: 'bar',
+        stderr: 'baz'
+      }));
       return expect(ketch('foo').exec()).to.eventually.be.fulfilled
         .then(function () {
-          expect(child_process.exec).to.have.been.called;
-          expect(child_process.exec).to.have.been.calledWith('foo');
+          expect(childProcess.exec).to.have.been.called;
+          expect(childProcess.exec).to.have.been.calledWith('foo');
         });
     });
 
     it('should resolve with stdout and stderr', function () {
-      sandbox.stub(child_process, 'exec').yieldsAsync(null, 'bar', 'baz');
+      sandbox.stub(childProcess, 'exec').returns(Promise.resolve({
+        stdout: 'bar',
+        stderr: 'baz'
+      }));
       return expect(ketch('foo').exec()).to.eventually.be.fulfilled
-        .then(function (args) {
-          var stdout = args[0],
-            stderr = args[1];
+        .then(function (result) {
+          var stdout = result.stdout,
+            stderr = result.stderr;
           expect(stdout).to.equal('bar');
           expect(stderr).to.equal('baz');
         });
     });
 
     it('should reject with err', function () {
-      sandbox.stub(child_process, 'exec').yieldsAsync('omg');
+      sandbox.stub(childProcess, 'exec').returns(Promise.reject('omg'));
       return expect(ketch('foo').exec()).to.eventually.be.rejectedWith('omg');
     });
   });
