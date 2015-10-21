@@ -38,7 +38,7 @@
     "jshint-stylish": "^2.0.1",
     "load-grunt-tasks": "^3.3.0",
     "mocha-lcov-reporter": "^1.0.0",
-    "sinon": "^1.17.1",
+    "sinon": "^1.17.2",
     "sinon-chai": "^2.8.0",
     "time-grunt": "^1.2.1"
   },
