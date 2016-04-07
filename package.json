@@ -43,6 +43,7 @@
     "time-grunt": "^1.2.2"
   },
   "dependencies": {
+    "bluebird": "^3.3.4",
     "child-process-promise": "^1.1.0"
   },
   "config": {
