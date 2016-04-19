@@ -31,7 +31,7 @@
     "bluebird": "^3.0.1",
     "chai": "^3.4.0",
     "chai-as-promised": "^5.1.0",
-    "grunt-bump": "^0.7.0",
+    "grunt-bump": "^0.8.0",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-mocha-cov": "^0.4.0",
