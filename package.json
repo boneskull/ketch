@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "bluebird": "^3.3.4",
-    "child-process-promise": "^1.1.0"
+    "child-process-promise": "^2.0.3"
   },
   "config": {
     "blanket": {
