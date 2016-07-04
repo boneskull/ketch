@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/boneskull/ketch",
   "devDependencies": {
-    "bluebird": "^3.0.1",
+    "bluebird": "^3.0.6",
     "chai": "^3.4.0",
     "chai-as-promised": "^5.1.0",
     "grunt-bump": "^0.7.0",
